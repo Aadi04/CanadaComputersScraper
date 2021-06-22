@@ -34,7 +34,8 @@ def get_content_from_canada_computers():
             break
         else:
             #Instock!! 
-            publish('Lets gooo its in stock in Canada Computers!!! Goooooo!')
+            # publish('Lets gooo its in stock in Canada Computers!!! Goooooo!')
+            print("In stock")
             break
 
 
