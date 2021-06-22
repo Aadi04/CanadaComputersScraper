@@ -36,6 +36,7 @@ def get_content_from_canada_computers():
             #Instock!! 
             # publish('Lets gooo its in stock in Canada Computers!!! Goooooo!')
             print("In stock")
+            time.sleep(10)
             
 
 
