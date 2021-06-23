@@ -20,7 +20,9 @@ def get_content_from_canada_computers():
    attempts = 0
    for text in result:
        counter = counter +1
-    
+   
+   print(counter)
+   
    while (True):
         if counter == 2: 
             # Not in Stock
