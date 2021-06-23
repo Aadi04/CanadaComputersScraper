@@ -5,38 +5,30 @@ from datetime import datetime
 import time
 from os import environ
 
+website = requests.get('https://www.canadacomputers.com/product_info.php?cPath=710_1925_1920_1923&item_id=187885')
 
+src = website.content
+soup = BeautifulSoup(src, "html.parser")
 
-def main():
-    website = requests.get('https://www.canadacomputers.com/product_info.php?cPath=710_1925_1920_1923&item_id=187885')
-
-    src = website.content
-    soup = BeautifulSoup(src, "html.parser")
-    
+def main():    
     get_content_from_canada_computers()
 
 
 def get_content_from_canada_computers():
-   counter = 0 
    attempts = 0
-   
-   
    
    while (True):
         result = soup.find_all('i', attrs = {'class' : 'fas fa-ban red text-danger'})
-
-        for text in result:
-            counter = counter +1
-
-        print(counter)
-
-        if counter == 2: 
+        
+        print (result)
+        
+        if len(result) == 2: 
             # Not in Stock
             print('Time = ' + str(datetime.now()) + "-Attempt = " + str(attempts))
             attempts += 1
-            time.sleep(15)
+            time.sleep(5)
         
-        elif counter > 2:
+        elif len(result) > 2:
             #Incase something weird happens 
             publish('Something weird has happend in the Canada Computers Script; check the website out just incase something is broken or it is in stock')
             break
@@ -45,9 +37,7 @@ def get_content_from_canada_computers():
             # publish('Lets gooo its in stock in Canada Computers!!! Goooooo!')
             print("In stock")
             time.sleep(10)
-            
-
-
+    
 def publish(message):
     arn = 'arn:aws:sns:ca-central-1:616203313326:InStockTopic'
     sns_client = boto3.client (
