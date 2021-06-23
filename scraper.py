@@ -11,6 +11,7 @@ src = website.content
 soup = BeautifulSoup(src, "html.parser")
 
 def main():    
+    print(website.status_code)
     get_content_from_canada_computers()
 
 
