@@ -26,7 +26,7 @@ def get_content_from_canada_computers():
             # Not in Stock
             print('Time = ' + str(datetime.now()) + "-Attempt = " + str(attempts))
             attempts += 1
-            time.sleep(5)
+            time.sleep(4)
         
         elif len(result) > 2:
             #Incase something weird happens 
