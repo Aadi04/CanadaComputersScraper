@@ -5,13 +5,15 @@ from datetime import datetime
 import time
 from os import environ
 
-website = requests.get('https://www.canadacomputers.com/product_info.php?cPath=710_1925_1920_1923&item_id=187885')
 
-src = website.content
-soup = BeautifulSoup(src, "html.parser")
 
 def main():
-  get_content_from_canada_computers()
+    website = requests.get('https://www.canadacomputers.com/product_info.php?cPath=710_1925_1920_1923&item_id=187885')
+
+    src = website.content
+    soup = BeautifulSoup(src, "html.parser")
+    
+    get_content_from_canada_computers()
 
 
 def get_content_from_canada_computers():
@@ -27,7 +29,7 @@ def get_content_from_canada_computers():
             counter = counter +1
 
         print(counter)
-        
+
         if counter == 2: 
             # Not in Stock
             print('Time = ' + str(datetime.now()) + "-Attempt = " + str(attempts))
