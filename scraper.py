@@ -18,7 +18,7 @@ def get_content_from_canada_computers():
    counter = 0 
    attempts = 0
    
-   print(counter)
+   
    
    while (True):
         result = soup.find_all('i', attrs = {'class' : 'fas fa-ban red text-danger'})
@@ -26,6 +26,8 @@ def get_content_from_canada_computers():
         for text in result:
             counter = counter +1
 
+        print(counter)
+        
         if counter == 2: 
             # Not in Stock
             print('Time = ' + str(datetime.now()) + "-Attempt = " + str(attempts))
